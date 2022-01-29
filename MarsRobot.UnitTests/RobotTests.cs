@@ -41,19 +41,19 @@ namespace MarsRobot.UnitTests
         [Fact]
         public void MoveForward_UntilEndOfPlateuThenTurnRight()
         {
-            (int x, int y) max = (3,4);
+            (uint x, uint y) max = (3U,4U);
             var robot = new Robot(max.x, max.y);
 
             // heading North:
-            for (int y = 1; y <= max.y; ++y)
+            for (uint y = 1; y <= max.y; ++y)
             {
-                Assert.Equal((1, y), robot.Position);
+                Assert.Equal((1U,y), robot.Position);
                 robot.MoveForward();
             }
 
             // heading East:
             robot.TurnRight();
-            for (int x = 1; x <= max.x; ++x)
+            for (uint x = 1; x <= max.x; ++x)
             {
                 Assert.Equal((x, max.y), robot.Position);
                 robot.MoveForward();
@@ -61,7 +61,7 @@ namespace MarsRobot.UnitTests
 
             // heading South:
             robot.TurnRight();
-            for (int y = max.y; y >= 1; --y)
+            for (uint y = max.y; y >= 1; --y)
             {
                 Assert.Equal((max.x, y), robot.Position);
                 robot.MoveForward();
@@ -69,14 +69,14 @@ namespace MarsRobot.UnitTests
 
             // heading West:
             robot.TurnRight();
-            for (int x = max.x; x >= 1; --x)
+            for (uint x = max.x; x >= 1; --x)
             {
-                Assert.Equal((x, 1), robot.Position);
+                Assert.Equal((x, 1U), robot.Position);
                 robot.MoveForward();
             }
 
             // back to origin
-            Assert.Equal((1,1), robot.Position);
+            Assert.Equal((1U,1U), robot.Position);
         }
     }
 }

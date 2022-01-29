@@ -8,9 +8,9 @@ namespace MarsRobot
     {
         static void Main(string[] _)
         {
-            IList<int> dimension = Console.ReadLine()
-                .Split('x').Select(s => int.Parse(s)).ToList();
-
+            IList<uint> dimension = Console.ReadLine()
+                .Split('x').Select(s => uint.Parse(s)).ToList();
+            
             Robot robot = new(dimension[0], dimension[1]);
             string commands = Console.ReadLine();
             CommandParser.ParseAndExecute(commands, robot);

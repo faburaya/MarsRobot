@@ -6,15 +6,15 @@ namespace MarsRobot
     /// </summary>
     public class Robot : ICommandReceiver
     {
-        public enum CardinalDirection { North, West, South, East };
+        public enum CardinalDirection { North = 1, West, South, East };
 
         public CardinalDirection Direction { get; private set; }
 
-        public (int x, int y) Position => _position;
+        public (uint x, uint y) Position => _position;
 
-        private (int x, int y) _position;
+        private (uint x, uint y) _position;
 
-        private readonly (int x, int y) _max;
+        private readonly (uint x, uint y) _max;
 
         /// <summary>
         /// Creates the plateau where the robot moves.
@@ -23,7 +23,7 @@ namespace MarsRobot
         /// </summary>
         /// <param name="maxPlateauX">Maximum coordinate (inclusive) for the East-West axis.</param>
         /// <param name="maxPlateauY">Maximum coordinate (inclusive) for the North-South axis.</param>
-        public Robot(int maxPlateauX, int maxPlateauY)
+        public Robot(uint maxPlateauX, uint maxPlateauY)
         {
             _max.x = maxPlateauX;
             _max.y = maxPlateauY;
@@ -33,8 +33,8 @@ namespace MarsRobot
 
         public void TurnLeft()
         {
-            int directionIndex = (int)Direction;
-            if (++directionIndex <= (int)CardinalDirection.East)
+            uint directionIndex = (uint)Direction;
+            if (++directionIndex <= (uint)CardinalDirection.East)
                 Direction = (CardinalDirection)directionIndex;
             else
                 Direction = CardinalDirection.North;
@@ -42,8 +42,8 @@ namespace MarsRobot
 
         public void TurnRight()
         {
-            int directionIndex = (int)Direction;
-            if (--directionIndex >= (int)CardinalDirection.North)
+            uint directionIndex = (uint)Direction;
+            if (--directionIndex >= (uint)CardinalDirection.North)
                 Direction = (CardinalDirection)directionIndex;
             else
                 Direction = CardinalDirection.East;
