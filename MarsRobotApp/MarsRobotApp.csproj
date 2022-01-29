@@ -6,4 +6,8 @@
     <RootNamespace>MarsRobot</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MarsRobot\MarsRobot.csproj" />
+  </ItemGroup>
+
 </Project>
